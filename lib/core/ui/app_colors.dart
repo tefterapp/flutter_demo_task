@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/scores/domain/entities/score_type.dart';
 import '../extensions/build_context_x.dart';
 
 abstract final class AppColors {
@@ -10,6 +11,17 @@ abstract final class AppColors {
   static const Color scoreHealth = Color(0xFF3B82F6);
   static const Color scoreReadiness = Color(0xFF8B5CF6);
   static const Color scoreActivity = Color(0xFF34C759);
+
+  static Color forScoreType(ScoreType type) {
+    switch (type) {
+      case ScoreType.health:
+        return scoreHealth;
+      case ScoreType.readiness:
+        return scoreReadiness;
+      case ScoreType.activity:
+        return scoreActivity;
+    }
+  }
 
   static const Color metricIconLightGreen = Color(0xFF4CD964);
   static const Color metricIconLightBlue = Color(0xFF3ABEFF);
