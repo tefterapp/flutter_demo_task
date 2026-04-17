@@ -1,0 +1,527 @@
+{
+  "scores": [
+    {
+      "type": "health",
+      "currentScore": 74.0,
+      "valueLabel": "Good",
+      "timeframes": {
+        "d1": {
+          "points": [
+            { "date": "2026-04-15T06:00:00Z", "value": 70.0 },
+            { "date": "2026-04-15T12:00:00Z", "value": null },
+            { "date": "2026-04-15T18:00:00Z", "value": 71.5 },
+            { "date": "2026-04-16T00:00:00Z", "value": 72.5 },
+            { "date": "2026-04-17T00:00:00Z", "value": 74.0 }
+          ],
+          "metrics": {
+            "activePoints": [
+              { "date": "2026-04-15", "value": 18.0 },
+              { "date": "2026-04-16", "value": null },
+              { "date": "2026-04-17", "value": 22.0 }
+            ],
+            "steps": [
+              { "date": "2026-04-15", "value": 8420.0 },
+              { "date": "2026-04-16", "value": null },
+              { "date": "2026-04-17", "value": 9100.0 }
+            ],
+            "activeCalories": [
+              { "date": "2026-04-15", "value": 420.0 },
+              { "date": "2026-04-16", "value": 380.0 },
+              { "date": "2026-04-17", "value": 460.0 }
+            ],
+            "moveHours": [
+              { "date": "2026-04-15", "value": 8.0 },
+              { "date": "2026-04-16", "value": null },
+              { "date": "2026-04-17", "value": 9.5 }
+            ],
+            "sleep": [
+              { "date": "2026-04-15", "value": 6.5 },
+              { "date": "2026-04-17", "value": 7.4 }
+            ],
+            "restingHr": [
+              { "date": "2026-04-15", "value": 54.0 },
+              { "date": "2026-04-16", "value": 52.0 },
+              { "date": "2026-04-17", "value": 51.0 }
+            ],
+            "hrv": [
+              { "date": "2026-04-15", "value": 42.0 },
+              { "date": "2026-04-16", "value": 38.0 },
+              { "date": "2026-04-17", "value": 44.0 }
+            ]
+          },
+          "insights": [
+            "Sleep improved versus yesterday.",
+            "HRV dipped midday; recovered by evening."
+          ],
+          "definitions": [
+            { "key": "activePoints", "title": "Active points", "description": "Intensity minutes scored." },
+            { "key": "steps", "title": "Steps", "description": "Daily step count." },
+            { "key": "activeCalories", "title": "Active calories", "description": "Kcal from movement." },
+            { "key": "moveHours", "title": "Move hours", "description": "Hours with meaningful movement." },
+            { "key": "sleep", "title": "Sleep", "description": "Tracked sleep duration in hours." },
+            { "key": "restingHr", "title": "Resting HR", "description": "Resting heart rate (BPM)." },
+            { "key": "hrv", "title": "HRV", "description": "Heart rate variability (ms)." }
+          ]
+        },
+        "d7": {
+          "points": [
+            { "date": "2026-04-10", "value": 68.0 },
+            { "date": "2026-04-12", "value": null },
+            { "date": "2026-04-14", "value": 71.0 },
+            { "date": "2026-04-16", "value": 72.5 },
+            { "date": "2026-04-17", "value": 74.0 }
+          ],
+          "metrics": {
+            "activePoints": [
+              { "date": "2026-04-10", "value": 22.0 },
+              { "date": "2026-04-16", "value": 20.0 }
+            ],
+            "steps": [
+              { "date": "2026-04-10", "value": 9100.0 },
+              { "date": "2026-04-12", "value": null },
+              { "date": "2026-04-16", "value": 8800.0 }
+            ],
+            "activeCalories": [
+              { "date": "2026-04-10", "value": 510.0 },
+              { "date": "2026-04-16", "value": 400.0 }
+            ],
+            "moveHours": [
+              { "date": "2026-04-12", "value": 10.0 },
+              { "date": "2026-04-15", "value": 9.0 }
+            ],
+            "sleep": [
+              { "date": "2026-04-10", "value": 6.8 },
+              { "date": "2026-04-16", "value": 7.2 }
+            ],
+            "restingHr": [
+              { "date": "2026-04-10", "value": 56.0 },
+              { "date": "2026-04-16", "value": 52.0 }
+            ],
+            "hrv": [
+              { "date": "2026-04-11", "value": 45.0 },
+              { "date": "2026-04-13", "value": null }
+            ]
+          },
+          "insights": [
+            "Weekly trend is slightly upward.",
+            "One day has incomplete step data."
+          ],
+          "definitions": [
+            { "key": "activePoints", "title": "Active points", "description": "Intensity minutes scored." },
+            { "key": "steps", "title": "Steps", "description": "Daily step count." },
+            { "key": "activeCalories", "title": "Active calories", "description": "Kcal from movement." },
+            { "key": "moveHours", "title": "Move hours", "description": "Hours with meaningful movement." },
+            { "key": "sleep", "title": "Sleep", "description": "Tracked sleep duration in hours." },
+            { "key": "restingHr", "title": "Resting HR", "description": "Resting heart rate (BPM)." },
+            { "key": "hrv", "title": "HRV", "description": "Heart rate variability (ms)." }
+          ]
+        },
+        "d30": {
+          "points": [
+            { "date": "2026-03-18", "value": 65.0 },
+            { "date": "2026-04-01", "value": 69.0 },
+            { "date": "2026-04-08", "value": null },
+            { "date": "2026-04-16", "value": 72.5 },
+            { "date": "2026-04-17", "value": 74.0 }
+          ],
+          "metrics": {
+            "activePoints": [
+              { "date": "2026-03-28", "value": 16.0 },
+              { "date": "2026-04-12", "value": 21.0 }
+            ],
+            "steps": [
+              { "date": "2026-03-20", "value": 7800.0 },
+              { "date": "2026-04-05", "value": 9000.0 }
+            ],
+            "activeCalories": [
+              { "date": "2026-04-01", "value": null },
+              { "date": "2026-04-15", "value": 450.0 }
+            ],
+            "moveHours": [
+              { "date": "2026-04-03", "value": 7.0 },
+              { "date": "2026-04-14", "value": 9.0 }
+            ],
+            "sleep": [
+              { "date": "2026-03-25", "value": null },
+              { "date": "2026-04-10", "value": 7.0 }
+            ],
+            "restingHr": [
+              { "date": "2026-03-25", "value": null },
+              { "date": "2026-04-10", "value": 53.0 }
+            ],
+            "hrv": [
+              { "date": "2026-04-02", "value": 40.0 },
+              { "date": "2026-04-14", "value": 44.0 }
+            ]
+          },
+          "insights": [
+            "30-day health score climbed steadily.",
+            "Sleep sample missing for one week in March."
+          ],
+          "definitions": [
+            { "key": "activePoints", "title": "Active points", "description": "Intensity minutes scored." },
+            { "key": "steps", "title": "Steps", "description": "Daily step count." },
+            { "key": "activeCalories", "title": "Active calories", "description": "Kcal from movement." },
+            { "key": "moveHours", "title": "Move hours", "description": "Hours with meaningful movement." },
+            { "key": "sleep", "title": "Sleep", "description": "Tracked sleep duration in hours." },
+            { "key": "restingHr", "title": "Resting HR", "description": "Resting heart rate (BPM)." },
+            { "key": "hrv", "title": "HRV", "description": "Heart rate variability (ms)." }
+          ]
+        },
+        "y1": {
+          "points": [
+            { "date": "2025-07-01", "value": 62.0 },
+            { "date": "2025-10-01", "value": 66.0 },
+            { "date": "2026-01-01", "value": null },
+            { "date": "2026-04-01", "value": 71.0 },
+            { "date": "2026-04-16", "value": 72.5 },
+            { "date": "2026-04-17", "value": 74.0 }
+          ],
+          "metrics": {
+            "activePoints": [
+              { "date": "2025-10-01", "value": 17.0 },
+              { "date": "2026-04-01", "value": 20.0 }
+            ],
+            "steps": [
+              { "date": "2025-07-01", "value": 7500.0 },
+              { "date": "2026-01-01", "value": null },
+              { "date": "2026-04-01", "value": 8900.0 }
+            ],
+            "activeCalories": [
+              { "date": "2025-05-01", "value": 400.0 },
+              { "date": "2026-04-01", "value": 480.0 }
+            ],
+            "moveHours": [
+              { "date": "2025-11-01", "value": 8.0 },
+              { "date": "2026-04-01", "value": 10.0 }
+            ],
+            "sleep": [
+              { "date": "2025-10-01", "value": 6.4 },
+              { "date": "2026-04-01", "value": 6.9 }
+            ],
+            "restingHr": [
+              { "date": "2025-06-01", "value": 58.0 },
+              { "date": "2026-03-01", "value": 54.0 }
+            ],
+            "hrv": [
+              { "date": "2025-07-01", "value": 38.0 },
+              { "date": "2026-04-01", "value": 43.0 }
+            ]
+          },
+          "insights": [
+            "Year-over-year activity and sleep both improved.",
+            "January aggregate has a gap due to missing export."
+          ],
+          "definitions": [
+            { "key": "activePoints", "title": "Active points", "description": "Intensity minutes scored." },
+            { "key": "steps", "title": "Steps", "description": "Daily step count." },
+            { "key": "activeCalories", "title": "Active calories", "description": "Kcal from movement." },
+            { "key": "moveHours", "title": "Move hours", "description": "Hours with meaningful movement." },
+            { "key": "sleep", "title": "Sleep", "description": "Tracked sleep duration in hours." },
+            { "key": "restingHr", "title": "Resting HR", "description": "Resting heart rate (BPM)." },
+            { "key": "hrv", "title": "HRV", "description": "Heart rate variability (ms)." }
+          ]
+        }
+      }
+    },
+    {
+      "type": "readiness",
+      "currentScore": 83.0,
+      "valueLabel": "High",
+      "timeframes": {
+        "d1": {
+          "points": [
+            { "date": "2026-04-15T08:00:00Z", "value": 79.0 },
+            { "date": "2026-04-15T16:00:00Z", "value": null },
+            { "date": "2026-04-16T08:00:00Z", "value": 81.0 },
+            { "date": "2026-04-17T08:00:00Z", "value": 83.0 }
+          ],
+          "metrics": {
+            "sleep": [
+              { "date": "2026-04-15", "value": 7.1 },
+              { "date": "2026-04-16", "value": null },
+              { "date": "2026-04-17", "value": 7.4 }
+            ],
+            "restingHr": [
+              { "date": "2026-04-15", "value": 54.0 },
+              { "date": "2026-04-16", "value": 52.0 },
+              { "date": "2026-04-17", "value": 51.0 }
+            ],
+            "hrv": [
+              { "date": "2026-04-15", "value": 48.0 },
+              { "date": "2026-04-16", "value": 46.0 },
+              { "date": "2026-04-17", "value": 49.0 }
+            ]
+          },
+          "insights": [
+            "Readiness strong after solid sleep.",
+            "Morning HRV not recorded (sensor gap)."
+          ],
+          "definitions": [
+            { "key": "sleep", "title": "Sleep", "description": "Last night duration (hours)." },
+            { "key": "restingHr", "title": "Resting HR", "description": "Resting heart rate (BPM)." },
+            { "key": "hrv", "title": "HRV", "description": "Heart rate variability (ms)." }
+          ]
+        },
+        "d7": {
+          "points": [
+            { "date": "2026-04-10", "value": 76.0 },
+            { "date": "2026-04-11", "value": 78.5 },
+            { "date": "2026-04-13", "value": null },
+            { "date": "2026-04-16", "value": 81.0 },
+            { "date": "2026-04-17", "value": 83.0 }
+          ],
+          "metrics": {
+            "sleep": [
+              { "date": "2026-04-10", "value": 6.4 },
+              { "date": "2026-04-13", "value": null },
+              { "date": "2026-04-16", "value": 7.1 }
+            ],
+            "restingHr": [
+              { "date": "2026-04-10", "value": 56.0 },
+              { "date": "2026-04-16", "value": 52.0 }
+            ],
+            "hrv": [
+              { "date": "2026-04-12", "value": 44.0 },
+              { "date": "2026-04-14", "value": 47.0 }
+            ]
+          },
+          "insights": [
+            "Recovery metrics stable across the week.",
+            "Mid-week sleep estimate missing."
+          ],
+          "definitions": [
+            { "key": "sleep", "title": "Sleep", "description": "Last night duration (hours)." },
+            { "key": "restingHr", "title": "Resting HR", "description": "Resting heart rate (BPM)." },
+            { "key": "hrv", "title": "HRV", "description": "Heart rate variability (ms)." }
+          ]
+        },
+        "d30": {
+          "points": [
+            { "date": "2026-03-20", "value": 74.0 },
+            { "date": "2026-04-01", "value": 77.0 },
+            { "date": "2026-04-09", "value": null },
+            { "date": "2026-04-16", "value": 81.0 },
+            { "date": "2026-04-17", "value": 83.0 }
+          ],
+          "metrics": {
+            "sleep": [
+              { "date": "2026-03-22", "value": 6.9 },
+              { "date": "2026-04-05", "value": 7.0 }
+            ],
+            "restingHr": [
+              { "date": "2026-03-25", "value": null },
+              { "date": "2026-04-10", "value": 53.0 }
+            ],
+            "hrv": [
+              { "date": "2026-04-01", "value": 45.0 },
+              { "date": "2026-04-16", "value": 46.0 }
+            ]
+          },
+          "insights": [
+            "Resting HR trending down — positive sign.",
+            "One week of HRV gaps during travel."
+          ],
+          "definitions": [
+            { "key": "sleep", "title": "Sleep", "description": "Last night duration (hours)." },
+            { "key": "restingHr", "title": "Resting HR", "description": "Resting heart rate (BPM)." },
+            { "key": "hrv", "title": "HRV", "description": "Heart rate variability (ms)." }
+          ]
+        },
+        "y1": {
+          "points": [
+            { "date": "2025-06-01", "value": 70.0 },
+            { "date": "2025-09-01", "value": 73.0 },
+            { "date": "2025-12-01", "value": null },
+            { "date": "2026-03-01", "value": 79.0 },
+            { "date": "2026-04-16", "value": 81.0 },
+            { "date": "2026-04-17", "value": 83.0 }
+          ],
+          "metrics": {
+            "sleep": [
+              { "date": "2025-09-01", "value": 6.6 },
+              { "date": "2026-03-01", "value": 7.0 }
+            ],
+            "restingHr": [
+              { "date": "2025-06-01", "value": 58.0 },
+              { "date": "2026-03-01", "value": 54.0 }
+            ],
+            "hrv": [
+              { "date": "2025-12-01", "value": null },
+              { "date": "2026-04-01", "value": 46.0 }
+            ]
+          },
+          "insights": [
+            "Annual readiness improved with consistent sleep.",
+            "December HRV export incomplete."
+          ],
+          "definitions": [
+            { "key": "sleep", "title": "Sleep", "description": "Last night duration (hours)." },
+            { "key": "restingHr", "title": "Resting HR", "description": "Resting heart rate (BPM)." },
+            { "key": "hrv", "title": "HRV", "description": "Heart rate variability (ms)." }
+          ]
+        }
+      }
+    },
+    {
+      "type": "activity",
+      "currentScore": 66.0,
+      "valueLabel": "Moderate",
+      "timeframes": {
+        "d1": {
+          "points": [
+            { "date": "2026-04-15T10:00:00Z", "value": 62.0 },
+            { "date": "2026-04-15T14:00:00Z", "value": null },
+            { "date": "2026-04-15T20:00:00Z", "value": 63.5 },
+            { "date": "2026-04-16T08:00:00Z", "value": 64.0 },
+            { "date": "2026-04-17T08:00:00Z", "value": 66.0 }
+          ],
+          "metrics": {
+            "activePoints": [
+              { "date": "2026-04-15", "value": 14.0 },
+              { "date": "2026-04-16", "value": 12.0 },
+              { "date": "2026-04-17", "value": 19.0 }
+            ],
+            "steps": [
+              { "date": "2026-04-15", "value": 6200.0 },
+              { "date": "2026-04-16", "value": null },
+              { "date": "2026-04-17", "value": 8300.0 }
+            ],
+            "activeCalories": [
+              { "date": "2026-04-15", "value": 420.0 },
+              { "date": "2026-04-16", "value": 380.0 },
+              { "date": "2026-04-17", "value": 470.0 }
+            ],
+            "moveHours": [
+              { "date": "2026-04-15", "value": 8.0 },
+              { "date": "2026-04-16", "value": null },
+              { "date": "2026-04-17", "value": 9.5 }
+            ]
+          },
+          "insights": [
+            "Steps below goal; afternoon walk helped.",
+            "Move hours incomplete for today."
+          ],
+          "definitions": [
+            { "key": "activePoints", "title": "Active points", "description": "Intensity minutes scored." },
+            { "key": "steps", "title": "Steps", "description": "Daily step count." },
+            { "key": "activeCalories", "title": "Active calories", "description": "Kcal from movement." },
+            { "key": "moveHours", "title": "Move hours", "description": "Hours with meaningful movement." }
+          ]
+        },
+        "d7": {
+          "points": [
+            { "date": "2026-04-10", "value": 58.0 },
+            { "date": "2026-04-12", "value": 61.0 },
+            { "date": "2026-04-14", "value": null },
+            { "date": "2026-04-16", "value": 64.0 },
+            { "date": "2026-04-17", "value": 66.0 }
+          ],
+          "metrics": {
+            "activePoints": [
+              { "date": "2026-04-10", "value": 18.0 },
+              { "date": "2026-04-16", "value": 12.0 }
+            ],
+            "steps": [
+              { "date": "2026-04-11", "value": 10200.0 },
+              { "date": "2026-04-14", "value": null }
+            ],
+            "activeCalories": [
+              { "date": "2026-04-10", "value": 510.0 },
+              { "date": "2026-04-16", "value": 400.0 }
+            ],
+            "moveHours": [
+              { "date": "2026-04-12", "value": 10.0 },
+              { "date": "2026-04-15", "value": 9.0 }
+            ]
+          },
+          "insights": [
+            "Weekly activity picked up after mid-week.",
+            "One day missing step totals."
+          ],
+          "definitions": [
+            { "key": "activePoints", "title": "Active points", "description": "Intensity minutes scored." },
+            { "key": "steps", "title": "Steps", "description": "Daily step count." },
+            { "key": "activeCalories", "title": "Active calories", "description": "Kcal from movement." },
+            { "key": "moveHours", "title": "Move hours", "description": "Hours with meaningful movement." }
+          ]
+        },
+        "d30": {
+          "points": [
+            { "date": "2026-03-20", "value": 55.0 },
+            { "date": "2026-04-05", "value": 60.0 },
+            { "date": "2026-04-12", "value": null },
+            { "date": "2026-04-16", "value": 64.0 },
+            { "date": "2026-04-17", "value": 66.0 }
+          ],
+          "metrics": {
+            "activePoints": [
+              { "date": "2026-03-25", "value": 15.0 },
+              { "date": "2026-04-10", "value": 20.0 }
+            ],
+            "steps": [
+              { "date": "2026-03-28", "value": 8800.0 },
+              { "date": "2026-04-08", "value": 9500.0 }
+            ],
+            "activeCalories": [
+              { "date": "2026-04-01", "value": null },
+              { "date": "2026-04-15", "value": 450.0 }
+            ],
+            "moveHours": [
+              { "date": "2026-04-03", "value": 7.0 },
+              { "date": "2026-04-14", "value": 9.0 }
+            ]
+          },
+          "insights": [
+            "Activity score recovering from a low March.",
+            "Early April calorie estimate missing one day."
+          ],
+          "definitions": [
+            { "key": "activePoints", "title": "Active points", "description": "Intensity minutes scored." },
+            { "key": "steps", "title": "Steps", "description": "Daily step count." },
+            { "key": "activeCalories", "title": "Active calories", "description": "Kcal from movement." },
+            { "key": "moveHours", "title": "Move hours", "description": "Hours with meaningful movement." }
+          ]
+        },
+        "y1": {
+          "points": [
+            { "date": "2025-05-01", "value": 52.0 },
+            { "date": "2025-08-01", "value": 57.0 },
+            { "date": "2025-11-01", "value": null },
+            { "date": "2026-02-01", "value": 61.0 },
+            { "date": "2026-04-16", "value": 64.0 },
+            { "date": "2026-04-17", "value": 66.0 }
+          ],
+          "metrics": {
+            "activePoints": [
+              { "date": "2025-08-01", "value": 16.0 },
+              { "date": "2026-04-01", "value": 19.0 }
+            ],
+            "steps": [
+              { "date": "2025-11-01", "value": null },
+              { "date": "2026-04-01", "value": 9200.0 }
+            ],
+            "activeCalories": [
+              { "date": "2025-05-01", "value": 400.0 },
+              { "date": "2026-04-01", "value": 480.0 }
+            ],
+            "moveHours": [
+              { "date": "2025-11-01", "value": 8.0 },
+              { "date": "2026-04-01", "value": 10.0 }
+            ]
+          },
+          "insights": [
+            "Year-long upward trend in movement.",
+            "Q4 step aggregate has a known data gap."
+          ],
+          "definitions": [
+            { "key": "activePoints", "title": "Active points", "description": "Intensity minutes scored." },
+            { "key": "steps", "title": "Steps", "description": "Daily step count." },
+            { "key": "activeCalories", "title": "Active calories", "description": "Kcal from movement." },
+            { "key": "moveHours", "title": "Move hours", "description": "Hours with meaningful movement." }
+          ]
+        }
+      }
+    }
+  ]
+}
