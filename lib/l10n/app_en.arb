@@ -1,0 +1,90 @@
+{
+  "@@locale": "en",
+  "appTitle": "Score Detail Preview",
+
+  "scoreHealth": "Health",
+  "scoreReadiness": "Readiness",
+  "scoreActivity": "Activity",
+
+  "timeframe1d": "1D",
+  "timeframe7d": "7D",
+  "timeframe30d": "30D",
+  "timeframe1y": "1Y",
+
+  "sectionMetrics": "Metrics",
+  "sectionInsights": "Insights",
+  "sectionInfo": "Info",
+  "sectionHowItWorks": "How It Works?",
+  "howItWorksHealth": "Your Health Score brings rest and activity together into one number, showing how balanced your day is. It's the average of your Readiness and Activity scores.\n\nA score of 80 represents your personal baseline. This is the point where your daily metrics align with your 30-day averages.",
+  "howItWorksReadiness": "Your Readiness Score reflects how recovered you are based on sleep, resting heart rate, and heart rate variability.\n\nA score of 80 represents your personal baseline — a day when recovery metrics align with your 30-day averages.",
+  "howItWorksActivity": "Your Activity Score measures how active you were based on steps, active calories, active points, and move hours.\n\nA score of 80 represents your personal baseline — a day when your movement meets your 30-day average.",
+  "scoreSuffix": " Score",
+
+  "labelAvg": "Daily Avg.",
+  "labelNoData": "No data",
+  "labelRetry": "Retry",
+
+  "metricTitleSleep": "Sleep",
+  "metricTitleRestingHr": "Resting HR",
+  "metricTitleOvernightHrv": "Overnight HRV",
+  "metricTitleActivePoints": "Active points",
+  "metricTitleSteps": "Steps",
+  "metricTitleActiveCalories": "Active calories",
+  "metricTitleMoveHours": "Move hours",
+
+  "emptyTitle": "Nothing to show",
+  "emptyMessage": "Tap Retry to try again.",
+  "errorTitle": "Something went wrong",
+  "errorMessage": "Tap Retry to try again.",
+
+  "periodDay": "day",
+  "periodWeek": "week",
+  "periodMonth": "month",
+  "periodYear": "year",
+
+  "insightsNoData": "No score recorded for this {period}.",
+  "@insightsNoData": {
+    "placeholders": {
+      "period": { "type": "String" }
+    }
+  },
+
+  "insightsScoreValue": "Score of {value} on this {period}.",
+  "@insightsScoreValue": {
+    "placeholders": {
+      "value": { "type": "String" },
+      "period": { "type": "String" }
+    }
+  },
+
+  "insightsAverageValue": "Average of {value} pts across this {period}.",
+  "@insightsAverageValue": {
+    "placeholders": {
+      "value": { "type": "String" },
+      "period": { "type": "String" }
+    }
+  },
+
+  "insightsDeltaUp": "Up {delta} pts vs previous {period}.",
+  "@insightsDeltaUp": {
+    "placeholders": {
+      "delta": { "type": "String" },
+      "period": { "type": "String" }
+    }
+  },
+
+  "insightsDeltaDown": "Down {delta} pts vs previous {period}.",
+  "@insightsDeltaDown": {
+    "placeholders": {
+      "delta": { "type": "String" },
+      "period": { "type": "String" }
+    }
+  },
+
+  "insightsDeltaFlat": "Roughly unchanged from previous {period}.",
+  "@insightsDeltaFlat": {
+    "placeholders": {
+      "period": { "type": "String" }
+    }
+  }
+}
