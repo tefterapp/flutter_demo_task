@@ -11,7 +11,8 @@ void main() {
 
   testWidgets('App shows scores home', (tester) async {
     await tester.pumpWidget(const App());
-    await tester.pumpAndSettle();
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 1));
 
     expect(find.byType(MaterialApp), findsOneWidget);
     expect(find.text('Score Detail Preview'), findsOneWidget);

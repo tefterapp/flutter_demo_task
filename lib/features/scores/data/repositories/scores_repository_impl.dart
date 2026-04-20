@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failure.dart';
@@ -9,58 +7,48 @@ import '../../domain/entities/score_summary.dart';
 import '../../domain/entities/score_type.dart';
 import '../../domain/repositories/scores_repository.dart';
 import '../datasources/scores_local_datasource.dart';
+import '../models/score_dto.dart';
 import '../models/scores_payload_dto.dart';
-
-typedef RandomProvider = double Function();
+import '../models/timeframe_dto.dart';
 
 final class ScoresRepositoryImpl implements ScoresRepository {
   ScoresRepositoryImpl({
     required ScoresLocalDataSource local,
-    RandomProvider? random,
-    this.refreshDelay = const Duration(milliseconds: 500),
-  })  : _local = local,
-        _random = random ?? _defaultRandomFrom(Random());
+    this.simulatedDelay = const Duration(milliseconds: 500),
+  }) : _local = local;
 
   final ScoresLocalDataSource _local;
-  final RandomProvider _random;
-  final Duration refreshDelay;
+  final Duration simulatedDelay;
 
   ScoresPayloadDto? _cache;
-  bool _forcedHomeEmpty = false;
-  final Map<({ScoreType type, Timeframe timeframe}), ScoreDetail>
-      _forcedEmptyDetails = {};
-
-  static RandomProvider _defaultRandomFrom(Random rng) => rng.nextDouble;
 
   Future<Either<Failure, ScoresPayloadDto>> _ensureCache() async {
     final cached = _cache;
     if (cached != null) {
       return Right(cached);
     }
+    await Future<void>.delayed(simulatedDelay);
     final result = await _local.loadScores();
-    return result.fold(Left.new, (dto) {
-      _cache = dto;
-      return Right(dto);
+    return result.fold(Left.new, (scoresPayloadDto) {
+      _cache = scoresPayloadDto;
+      return Right(scoresPayloadDto);
     });
   }
 
   @override
   Future<Either<Failure, List<ScoreSummary>>> getHomeScores() async {
-    if (_forcedHomeEmpty) {
-      return const Right(<ScoreSummary>[]);
-    }
     final ensured = await _ensureCache();
     return ensured.fold(Left.new, _mapSummaries);
   }
 
-  Either<Failure, List<ScoreSummary>> _mapSummaries(ScoresPayloadDto dto) {
+  Either<Failure, List<ScoreSummary>> _mapSummaries(
+    ScoresPayloadDto scoresPayloadDto,
+  ) {
     final summaries = <ScoreSummary>[];
-    for (final s in dto.scores) {
+    for (final s in scoresPayloadDto.scores) {
       final type = _scoreTypeFromJsonKey(s.type);
       if (type == null) {
-        return Left(
-          ParsingFailure(message: 'Unknown score type: ${s.type}'),
-        );
+        return Left(ParsingFailure(message: 'Unknown score type: ${s.type}'));
       }
       summaries.add(
         ScoreSummary(
@@ -87,24 +75,20 @@ final class ScoresRepositoryImpl implements ScoresRepository {
     required ScoreType type,
     required Timeframe timeframe,
   }) async {
-    final forced = _forcedEmptyDetails[(type: type, timeframe: timeframe)];
-    if (forced != null) {
-      return Right(forced);
-    }
     final ensured = await _ensureCache();
     return ensured.fold(
       Left.new,
-      (dto) => _mapScoreDetail(dto, type, timeframe),
+      (scoresPayloadDto) => _mapScoreDetail(scoresPayloadDto, type, timeframe),
     );
   }
 
   Either<Failure, ScoreDetail> _mapScoreDetail(
-    ScoresPayloadDto dto,
+    ScoresPayloadDto scoresPayloadDto,
     ScoreType type,
     Timeframe timeframe,
   ) {
     ScoreDto? match;
-    for (final s in dto.scores) {
+    for (final s in scoresPayloadDto.scores) {
       if (s.type == type.jsonKey) {
         match = s;
         break;
@@ -115,8 +99,8 @@ final class ScoresRepositoryImpl implements ScoresRepository {
         ParsingFailure(message: 'Missing score for type: ${type.jsonKey}'),
       );
     }
-    final tfDto = match.timeframes[timeframe.jsonKey];
-    if (tfDto == null) {
+    final timeframeDto = match.timeframes[timeframe.jsonKey];
+    if (timeframeDto == null) {
       return Left(
         ParsingFailure(
           message:
@@ -124,16 +108,16 @@ final class ScoresRepositoryImpl implements ScoresRepository {
         ),
       );
     }
-    return _mapTimeframeDto(type, timeframe, tfDto);
+    return _mapTimeframeDto(type, timeframe, timeframeDto);
   }
 
   Either<Failure, ScoreDetail> _mapTimeframeDto(
     ScoreType type,
     Timeframe timeframe,
-    TimeframeDto tf,
+    TimeframeDto timeframeDto,
   ) {
     final points = <ScorePoint>[];
-    for (final p in tf.points) {
+    for (final p in timeframeDto.points) {
       final parsed = DateTime.tryParse(p.date);
       if (parsed == null) {
         return Left(
@@ -144,7 +128,7 @@ final class ScoresRepositoryImpl implements ScoresRepository {
     }
 
     final metrics = <String, List<MetricPoint>>{};
-    for (final entry in tf.metrics.entries) {
+    for (final entry in timeframeDto.metrics.entries) {
       final list = <MetricPoint>[];
       for (final p in entry.value) {
         final parsed = DateTime.tryParse(p.date);
@@ -160,7 +144,7 @@ final class ScoresRepositoryImpl implements ScoresRepository {
       metrics[entry.key] = list;
     }
 
-    final definitions = tf.definitions
+    final definitions = timeframeDto.definitions
         .map(
           (d) => MetricDefinition(
             key: d.key,
@@ -176,46 +160,19 @@ final class ScoresRepositoryImpl implements ScoresRepository {
         timeframe: timeframe,
         points: points,
         metrics: metrics,
-        insights: List<String>.from(tf.insights),
+        insights: List<String>.from(timeframeDto.insights),
         definitions: definitions,
       ),
-    );
-  }
-
-  ScoreDetail _emptyDetailFrom(ScoreDetail real) {
-    return ScoreDetail(
-      type: real.type,
-      timeframe: real.timeframe,
-      points: real.points.map((p) => ScorePoint(date: p.date)).toList(),
-      metrics: real.metrics.map(
-        (k, v) => MapEntry(
-          k,
-          v.map((m) => MetricPoint(date: m.date)).toList(),
-        ),
-      ),
-      insights: const [],
-      definitions: real.definitions,
     );
   }
 
   @override
   Future<Either<Failure, List<ScoreSummary>>> refreshHomeScores() async {
     AppLogger.d('Scores · refreshing home list');
-    await Future<void>.delayed(refreshDelay);
-    final r = _random();
-    if (r < 0.18) {
-      AppLogger.w('Scores · home refresh failed (simulated network error)');
-      return const Left(NetworkFailure());
-    }
-    if (r < 0.28) {
-      _forcedHomeEmpty = true;
-      AppLogger.i('Scores · home refresh returned empty (simulated)');
-      return const Right(<ScoreSummary>[]);
-    }
-    _forcedHomeEmpty = false;
     _cache = null;
+    final result = await getHomeScores();
     AppLogger.d('Scores · home refresh succeeded');
-    return getHomeScores();
+    return result;
   }
 
   @override
@@ -225,24 +182,9 @@ final class ScoresRepositoryImpl implements ScoresRepository {
   }) async {
     final tag = '${type.name}/${timeframe.name}';
     AppLogger.d('Scores · refreshing detail for $tag');
-    await Future<void>.delayed(refreshDelay);
-    final r = _random();
-    if (r < 0.18) {
-      AppLogger.w('Scores · detail refresh failed for $tag (simulated)');
-      return const Left(NetworkFailure());
-    }
-    if (r < 0.28) {
-      final real = await getScoreDetail(type: type, timeframe: timeframe);
-      return real.fold(Left.new, (detail) {
-        final empty = _emptyDetailFrom(detail);
-        _forcedEmptyDetails[(type: type, timeframe: timeframe)] = empty;
-        AppLogger.i('Scores · detail refresh returned empty for $tag');
-        return Right(empty);
-      });
-    }
-    _forcedEmptyDetails.remove((type: type, timeframe: timeframe));
     _cache = null;
+    final result = await getScoreDetail(type: type, timeframe: timeframe);
     AppLogger.d('Scores · detail refresh succeeded for $tag');
-    return getScoreDetail(type: type, timeframe: timeframe);
+    return result;
   }
 }

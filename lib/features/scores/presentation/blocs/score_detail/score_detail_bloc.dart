@@ -89,7 +89,7 @@ class ScoreDetailBloc extends Bloc<ScoreDetailEvent, ScoreDetailState> {
       summary: event.summary,
       timeframe: Timeframe.d1,
       selectedDate: initialDate,
-      refresh: true,
+      refresh: false,
     );
   }
 

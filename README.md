@@ -4,7 +4,7 @@ Small Flutter app that recreates **Home** (3 score cards) and **Score Detail** s
 - Reusable UI components (a single `ScoreCard` widget is reused on Home and Score Detail via named constructors)
 - Feature-first Clean Architecture
 - Smooth interactions (timeframe switching, date navigation, pull-to-refresh)
-- Local JSON simulation (including loading/error/empty examples)
+- Local JSON data source with a simulated refresh delay
 - Full localization (UI chrome **and** metric titles like “Overnight HRV”)
 
 **Figma reference:** `https://www.figma.com/design/L3X4gAEcmMFiopRdG8JBH2/Rolla-UI-Demo?node-id=0-1`
@@ -29,7 +29,7 @@ lib/
   l10n/                   # ARB + generated localizations
   features/
     scores/
-      data/               # DTOs, local datasource, repository impl (mock JSON + simulation)
+      data/               # DTOs (one per file), local datasource, repository impl (mock JSON)
       domain/             # entities, repository contract, use cases
       presentation/       # pages, bloc/cubit, reusable widgets, charts
 ```
@@ -46,16 +46,13 @@ UI (Page/Widget)
 
 Dependency registration lives in `lib/features/scores/scores_injection.dart` and is called from `lib/core/di/di.dart`.
 
-## Mock data & simulation
+## Mock data
 
 - **Mock JSON**: `assets/mock/scores.json`
 - **Repository behavior** (`ScoresRepositoryImpl`):
-  - `get*` methods are cache-backed and do **not** simulate delays once cached (used for timeframe switching).
-  - `refresh*` methods simulate:
-    - network delay
-    - random **error** and **empty** outcomes
-
-This makes it easy to demonstrate loading/error/empty states via pull-to-refresh.
+  - `get*` methods are cache-backed; the **first** call (cold cache) waits out `simulatedDelay` (default 500ms) to mimic network latency — subsequent calls are instant. This keeps the loading skeleton visible on first entry without pretending to be a refresh.
+  - `refresh*` methods simply invalidate the cache and delegate to `get*`, so pull-to-refresh goes through the same delay + asset read. This is the single place where you can wire up real error simulation later (e.g. returning `Left(NetworkFailure())` based on a toggle).
+  - Error and empty states are still reachable from the UI (via the `Failure` type and empty payloads) — they’re just data-driven rather than randomized.
 
 ## Setup & run
 
@@ -96,6 +93,4 @@ flutter test
 - Switch timeframe (1D ↔ 7D ↔ 30D ↔ 1Y) and show chart/metrics update
 - Navigate dates (`<` / `>`) and show the right chevron disabled on “today”
 - Tap the `?` icon to open the **Info** bottom sheet (metric definitions)
-- Pull-to-refresh to show:
-  - loading skeleton
-  - at least one **empty** and one **error** example (randomized)
+- Pull-to-refresh to show the loading skeleton over a simulated delay

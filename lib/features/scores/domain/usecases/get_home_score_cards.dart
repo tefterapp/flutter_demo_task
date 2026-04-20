@@ -28,10 +28,8 @@ class GetHomeScoreCards {
     }
     final detailResults = await Future.wait(
       summaries.map(
-        (s) => _repository.getScoreDetail(
-          type: s.type,
-          timeframe: Timeframe.d1,
-        ),
+        (s) =>
+            _repository.getScoreDetail(type: s.type, timeframe: Timeframe.d1),
       ),
     );
 

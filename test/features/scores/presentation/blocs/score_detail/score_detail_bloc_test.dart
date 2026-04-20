@@ -91,16 +91,19 @@ void main() {
       ],
       verify: (_) {
         verify(
-          () => refresh(type: ScoreType.readiness, timeframe: Timeframe.d1),
+          () => get(type: ScoreType.readiness, timeframe: Timeframe.d1),
         ).called(1);
+        verifyNever(
+          () => refresh(type: ScoreType.readiness, timeframe: Timeframe.d1),
+        );
       },
     );
 
     blocTest<ScoreDetailBloc, ScoreDetailState>(
-      'emits loading then failure when refresh fails',
+      'emits loading then failure when initial get fails',
       build: () {
         when(
-          () => refresh(type: ScoreType.readiness, timeframe: Timeframe.d1),
+          () => get(type: ScoreType.readiness, timeframe: Timeframe.d1),
         ).thenAnswer(
           (_) async => const Left(NetworkFailure(message: 'offline')),
         );
@@ -130,7 +133,7 @@ void main() {
       'marks success as empty when every point value is null',
       build: () {
         when(
-          () => refresh(type: ScoreType.readiness, timeframe: Timeframe.d1),
+          () => get(type: ScoreType.readiness, timeframe: Timeframe.d1),
         ).thenAnswer(
           (_) async => Right(_detail(ScoreType.readiness, pointValue: null)),
         );
