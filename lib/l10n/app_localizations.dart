@@ -208,6 +208,48 @@ abstract class AppLocalizations {
   /// **'Retry'**
   String get labelRetry;
 
+  /// No description provided for @metricTitleSleep.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleep'**
+  String get metricTitleSleep;
+
+  /// No description provided for @metricTitleRestingHr.
+  ///
+  /// In en, this message translates to:
+  /// **'Resting HR'**
+  String get metricTitleRestingHr;
+
+  /// No description provided for @metricTitleOvernightHrv.
+  ///
+  /// In en, this message translates to:
+  /// **'Overnight HRV'**
+  String get metricTitleOvernightHrv;
+
+  /// No description provided for @metricTitleActivePoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Active points'**
+  String get metricTitleActivePoints;
+
+  /// No description provided for @metricTitleSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'Steps'**
+  String get metricTitleSteps;
+
+  /// No description provided for @metricTitleActiveCalories.
+  ///
+  /// In en, this message translates to:
+  /// **'Active calories'**
+  String get metricTitleActiveCalories;
+
+  /// No description provided for @metricTitleMoveHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Move hours'**
+  String get metricTitleMoveHours;
+
   /// No description provided for @emptyTitle.
   ///
   /// In en, this message translates to:

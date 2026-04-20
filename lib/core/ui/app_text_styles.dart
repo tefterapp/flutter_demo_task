@@ -9,13 +9,10 @@ abstract final class AppTextStyles {
     return withFont.copyWith(
       headlineMedium: withFont.headlineMedium?.copyWith(
         fontWeight: FontWeight.w700,
+        fontSize: 36,
       ),
-      titleLarge: withFont.titleLarge?.copyWith(
-        fontWeight: FontWeight.w700,
-      ),
-      titleMedium: withFont.titleMedium?.copyWith(
-        fontWeight: FontWeight.w600,
-      ),
+      titleLarge: withFont.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+      titleMedium: withFont.titleMedium?.copyWith(fontWeight: FontWeight.w600),
     );
   }
 }

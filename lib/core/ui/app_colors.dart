@@ -32,9 +32,6 @@ abstract final class AppColors {
   static const Color metricProgressMid = Color(0xFF2196F3);
   static const Color metricProgressHigh = Color(0xFF43A047);
 
-  // Light mode wants pure white so the gauge pops off the patterned
-  // background; dark mode uses a raised surface so the numeric label stays
-  // legible.
   static Color gaugeInnerSurface(BuildContext context) {
     return context.isDarkMode
         ? context.colors.surfaceContainerHighest

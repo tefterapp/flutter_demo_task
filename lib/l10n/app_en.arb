@@ -24,6 +24,14 @@
   "labelNoData": "No data",
   "labelRetry": "Retry",
 
+  "metricTitleSleep": "Sleep",
+  "metricTitleRestingHr": "Resting HR",
+  "metricTitleOvernightHrv": "Overnight HRV",
+  "metricTitleActivePoints": "Active points",
+  "metricTitleSteps": "Steps",
+  "metricTitleActiveCalories": "Active calories",
+  "metricTitleMoveHours": "Move hours",
+
   "emptyTitle": "Nothing to show",
   "emptyMessage": "Tap Retry to try again.",
   "errorTitle": "Something went wrong",

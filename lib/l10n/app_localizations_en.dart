@@ -69,6 +69,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labelRetry => 'Retry';
 
   @override
+  String get metricTitleSleep => 'Sleep';
+
+  @override
+  String get metricTitleRestingHr => 'Resting HR';
+
+  @override
+  String get metricTitleOvernightHrv => 'Overnight HRV';
+
+  @override
+  String get metricTitleActivePoints => 'Active points';
+
+  @override
+  String get metricTitleSteps => 'Steps';
+
+  @override
+  String get metricTitleActiveCalories => 'Active calories';
+
+  @override
+  String get metricTitleMoveHours => 'Move hours';
+
+  @override
   String get emptyTitle => 'Nothing to show';
 
   @override
