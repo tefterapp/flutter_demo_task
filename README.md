@@ -49,6 +49,25 @@ Dependency registration lives in `lib/features/scores/scores_injection.dart` and
 ## Mock data
 
 - **Mock JSON**: `assets/mock/scores.json`
+- **Shape**: flat per-score payload — each score carries one **daily** series and per-metric daily series, plus `insights` and `definitions`. The UI layer buckets the same series into 1D / 7D / 30D / 1Y views; the JSON does not duplicate data per timeframe.
+
+  ```json
+  {
+    "scores": [
+      {
+        "type": "health",
+        "currentScore": 76.5,
+        "valueLabel": "Good",
+        "points":      [{ "date": "2026-04-15", "value": 71.5 }, ...],
+        "metrics":     { "sleep": [...], "steps": [...], ... },
+        "insights":    ["..."],
+        "definitions": [{ "key": "sleep", ... }, ...]
+      }
+    ]
+  }
+  ```
+
+- **Consistency invariant**: a day either has data or it doesn’t. If the `points` entry for a date is `null`, there are no metric entries for that date (clean "gap" day in the charts). If the `points` entry has a value, at least one metric for that day is non-null. Partial sensor gaps (some metrics `null`, others filled) are allowed.
 - **Repository behavior** (`ScoresRepositoryImpl`):
   - `get*` methods are cache-backed; the **first** call (cold cache) waits out `simulatedDelay` (default 500ms) to mimic network latency — subsequent calls are instant. This keeps the loading skeleton visible on first entry without pretending to be a refresh.
   - `refresh*` methods simply invalidate the cache and delegate to `get*`, so pull-to-refresh goes through the same delay + asset read. This is the single place where you can wire up real error simulation later (e.g. returning `Left(NetworkFailure())` based on a toggle).
@@ -82,7 +101,7 @@ flutter test
 
 ## Notes / assumptions
 
-- **Timeframes**: `1D / 7D / 30D / 1Y` are modeled as `d1 / d7 / d30 / y1` in the JSON payload.
+- **Timeframes**: `1D / 7D / 30D / 1Y` are a **presentation concern only**. The JSON stores one daily series per score; bucketing by week / month / year happens in `ScoreTrendChart` and the metrics section. `Timeframe` is passed through the domain layer as metadata.
 - **Missing data → chart gaps**: any `null` values in score points render as empty bars (7D/30D/1Y) or a dash in the gauge (1D); all buckets in the visible window are rendered regardless of data presence.
 - **Metrics “Avg”**: 7D/30D/1Y show averages of the visible window; 1D shows the value for the selected day.
 - **Progress normalization**: metric progress bars are normalized per key (steps, sleep, HRV, etc.) using reasonable caps (documented in `metric_math.dart`).

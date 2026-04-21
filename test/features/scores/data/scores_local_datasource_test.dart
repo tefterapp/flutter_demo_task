@@ -35,26 +35,22 @@ void main() {
         'type': 'health',
         'currentScore': 72.5,
         'valueLabel': 'Good',
-        'timeframes': {
-          'd1': {
-            'points': [
-              {'date': '2026-04-15T06:00:00Z', 'value': 70.0},
-            ],
-            'metrics': {
-              'steps': [
-                {'date': '2026-04-15', 'value': 8420.0},
-              ],
-            },
-            'insights': ['ok'],
-            'definitions': [
-              {
-                'key': 'steps',
-                'title': 'Steps',
-                'description': 'Daily step count.',
-              },
-            ],
-          },
+        'points': [
+          {'date': '2026-04-15', 'value': 70.0},
+        ],
+        'metrics': {
+          'steps': [
+            {'date': '2026-04-15', 'value': 8420.0},
+          ],
         },
+        'insights': ['ok'],
+        'definitions': [
+          {
+            'key': 'steps',
+            'title': 'Steps',
+            'description': 'Daily step count.',
+          },
+        ],
       },
     ],
   });
@@ -73,14 +69,12 @@ void main() {
         expect(s.type, 'health');
         expect(s.currentScore, 72.5);
         expect(s.valueLabel, 'Good');
-        expect(s.timeframes.keys, contains('d1'));
-        final d1 = s.timeframes['d1']!;
-        expect(d1.points, hasLength(1));
-        expect(d1.points.single.date, '2026-04-15T06:00:00Z');
-        expect(d1.points.single.value, 70.0);
-        expect(d1.metrics['steps'], hasLength(1));
-        expect(d1.insights, ['ok']);
-        expect(d1.definitions.single.key, 'steps');
+        expect(s.points, hasLength(1));
+        expect(s.points.single.date, '2026-04-15');
+        expect(s.points.single.value, 70.0);
+        expect(s.metrics['steps'], hasLength(1));
+        expect(s.insights, ['ok']);
+        expect(s.definitions.single.key, 'steps');
       },
     );
   });

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ScoreDto {
 
- String get type; double get currentScore; String get valueLabel;@JsonKey(fromJson: _timeframesFromJson, toJson: _timeframesToJson) Map<String, TimeframeDto> get timeframes;
+ String get type; double get currentScore; String get valueLabel; List<DataPointDto> get points;@JsonKey(fromJson: _metricsFromJson, toJson: _metricsToJson) Map<String, List<DataPointDto>> get metrics; List<String> get insights; List<DefinitionDto> get definitions;
 /// Create a copy of ScoreDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ScoreDtoCopyWith<ScoreDto> get copyWith => _$ScoreDtoCopyWithImpl<ScoreDto>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ScoreDto&&(identical(other.type, type) || other.type == type)&&(identical(other.currentScore, currentScore) || other.currentScore == currentScore)&&(identical(other.valueLabel, valueLabel) || other.valueLabel == valueLabel)&&const DeepCollectionEquality().equals(other.timeframes, timeframes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ScoreDto&&(identical(other.type, type) || other.type == type)&&(identical(other.currentScore, currentScore) || other.currentScore == currentScore)&&(identical(other.valueLabel, valueLabel) || other.valueLabel == valueLabel)&&const DeepCollectionEquality().equals(other.points, points)&&const DeepCollectionEquality().equals(other.metrics, metrics)&&const DeepCollectionEquality().equals(other.insights, insights)&&const DeepCollectionEquality().equals(other.definitions, definitions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,currentScore,valueLabel,const DeepCollectionEquality().hash(timeframes));
+int get hashCode => Object.hash(runtimeType,type,currentScore,valueLabel,const DeepCollectionEquality().hash(points),const DeepCollectionEquality().hash(metrics),const DeepCollectionEquality().hash(insights),const DeepCollectionEquality().hash(definitions));
 
 @override
 String toString() {
-  return 'ScoreDto(type: $type, currentScore: $currentScore, valueLabel: $valueLabel, timeframes: $timeframes)';
+  return 'ScoreDto(type: $type, currentScore: $currentScore, valueLabel: $valueLabel, points: $points, metrics: $metrics, insights: $insights, definitions: $definitions)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ScoreDtoCopyWith<$Res>  {
   factory $ScoreDtoCopyWith(ScoreDto value, $Res Function(ScoreDto) _then) = _$ScoreDtoCopyWithImpl;
 @useResult
 $Res call({
- String type, double currentScore, String valueLabel,@JsonKey(fromJson: _timeframesFromJson, toJson: _timeframesToJson) Map<String, TimeframeDto> timeframes
+ String type, double currentScore, String valueLabel, List<DataPointDto> points,@JsonKey(fromJson: _metricsFromJson, toJson: _metricsToJson) Map<String, List<DataPointDto>> metrics, List<String> insights, List<DefinitionDto> definitions
 });
 
 
@@ -65,13 +65,16 @@ class _$ScoreDtoCopyWithImpl<$Res>
 
 /// Create a copy of ScoreDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? currentScore = null,Object? valueLabel = null,Object? timeframes = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? currentScore = null,Object? valueLabel = null,Object? points = null,Object? metrics = null,Object? insights = null,Object? definitions = null,}) {
   return _then(_self.copyWith(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,currentScore: null == currentScore ? _self.currentScore : currentScore // ignore: cast_nullable_to_non_nullable
 as double,valueLabel: null == valueLabel ? _self.valueLabel : valueLabel // ignore: cast_nullable_to_non_nullable
-as String,timeframes: null == timeframes ? _self.timeframes : timeframes // ignore: cast_nullable_to_non_nullable
-as Map<String, TimeframeDto>,
+as String,points: null == points ? _self.points : points // ignore: cast_nullable_to_non_nullable
+as List<DataPointDto>,metrics: null == metrics ? _self.metrics : metrics // ignore: cast_nullable_to_non_nullable
+as Map<String, List<DataPointDto>>,insights: null == insights ? _self.insights : insights // ignore: cast_nullable_to_non_nullable
+as List<String>,definitions: null == definitions ? _self.definitions : definitions // ignore: cast_nullable_to_non_nullable
+as List<DefinitionDto>,
   ));
 }
 
@@ -156,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String type,  double currentScore,  String valueLabel, @JsonKey(fromJson: _timeframesFromJson, toJson: _timeframesToJson)  Map<String, TimeframeDto> timeframes)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String type,  double currentScore,  String valueLabel,  List<DataPointDto> points, @JsonKey(fromJson: _metricsFromJson, toJson: _metricsToJson)  Map<String, List<DataPointDto>> metrics,  List<String> insights,  List<DefinitionDto> definitions)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ScoreDto() when $default != null:
-return $default(_that.type,_that.currentScore,_that.valueLabel,_that.timeframes);case _:
+return $default(_that.type,_that.currentScore,_that.valueLabel,_that.points,_that.metrics,_that.insights,_that.definitions);case _:
   return orElse();
 
 }
@@ -177,10 +180,10 @@ return $default(_that.type,_that.currentScore,_that.valueLabel,_that.timeframes)
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String type,  double currentScore,  String valueLabel, @JsonKey(fromJson: _timeframesFromJson, toJson: _timeframesToJson)  Map<String, TimeframeDto> timeframes)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String type,  double currentScore,  String valueLabel,  List<DataPointDto> points, @JsonKey(fromJson: _metricsFromJson, toJson: _metricsToJson)  Map<String, List<DataPointDto>> metrics,  List<String> insights,  List<DefinitionDto> definitions)  $default,) {final _that = this;
 switch (_that) {
 case _ScoreDto():
-return $default(_that.type,_that.currentScore,_that.valueLabel,_that.timeframes);case _:
+return $default(_that.type,_that.currentScore,_that.valueLabel,_that.points,_that.metrics,_that.insights,_that.definitions);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +200,10 @@ return $default(_that.type,_that.currentScore,_that.valueLabel,_that.timeframes)
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String type,  double currentScore,  String valueLabel, @JsonKey(fromJson: _timeframesFromJson, toJson: _timeframesToJson)  Map<String, TimeframeDto> timeframes)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String type,  double currentScore,  String valueLabel,  List<DataPointDto> points, @JsonKey(fromJson: _metricsFromJson, toJson: _metricsToJson)  Map<String, List<DataPointDto>> metrics,  List<String> insights,  List<DefinitionDto> definitions)?  $default,) {final _that = this;
 switch (_that) {
 case _ScoreDto() when $default != null:
-return $default(_that.type,_that.currentScore,_that.valueLabel,_that.timeframes);case _:
+return $default(_that.type,_that.currentScore,_that.valueLabel,_that.points,_that.metrics,_that.insights,_that.definitions);case _:
   return null;
 
 }
@@ -212,17 +215,38 @@ return $default(_that.type,_that.currentScore,_that.valueLabel,_that.timeframes)
 @JsonSerializable()
 
 class _ScoreDto implements ScoreDto {
-  const _ScoreDto({required this.type, required this.currentScore, required this.valueLabel, @JsonKey(fromJson: _timeframesFromJson, toJson: _timeframesToJson) required final  Map<String, TimeframeDto> timeframes}): _timeframes = timeframes;
+  const _ScoreDto({required this.type, required this.currentScore, required this.valueLabel, required final  List<DataPointDto> points, @JsonKey(fromJson: _metricsFromJson, toJson: _metricsToJson) required final  Map<String, List<DataPointDto>> metrics, required final  List<String> insights, required final  List<DefinitionDto> definitions}): _points = points,_metrics = metrics,_insights = insights,_definitions = definitions;
   factory _ScoreDto.fromJson(Map<String, dynamic> json) => _$ScoreDtoFromJson(json);
 
 @override final  String type;
 @override final  double currentScore;
 @override final  String valueLabel;
- final  Map<String, TimeframeDto> _timeframes;
-@override@JsonKey(fromJson: _timeframesFromJson, toJson: _timeframesToJson) Map<String, TimeframeDto> get timeframes {
-  if (_timeframes is EqualUnmodifiableMapView) return _timeframes;
+ final  List<DataPointDto> _points;
+@override List<DataPointDto> get points {
+  if (_points is EqualUnmodifiableListView) return _points;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableMapView(_timeframes);
+  return EqualUnmodifiableListView(_points);
+}
+
+ final  Map<String, List<DataPointDto>> _metrics;
+@override@JsonKey(fromJson: _metricsFromJson, toJson: _metricsToJson) Map<String, List<DataPointDto>> get metrics {
+  if (_metrics is EqualUnmodifiableMapView) return _metrics;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_metrics);
+}
+
+ final  List<String> _insights;
+@override List<String> get insights {
+  if (_insights is EqualUnmodifiableListView) return _insights;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_insights);
+}
+
+ final  List<DefinitionDto> _definitions;
+@override List<DefinitionDto> get definitions {
+  if (_definitions is EqualUnmodifiableListView) return _definitions;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_definitions);
 }
 
 
@@ -239,16 +263,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ScoreDto&&(identical(other.type, type) || other.type == type)&&(identical(other.currentScore, currentScore) || other.currentScore == currentScore)&&(identical(other.valueLabel, valueLabel) || other.valueLabel == valueLabel)&&const DeepCollectionEquality().equals(other._timeframes, _timeframes));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ScoreDto&&(identical(other.type, type) || other.type == type)&&(identical(other.currentScore, currentScore) || other.currentScore == currentScore)&&(identical(other.valueLabel, valueLabel) || other.valueLabel == valueLabel)&&const DeepCollectionEquality().equals(other._points, _points)&&const DeepCollectionEquality().equals(other._metrics, _metrics)&&const DeepCollectionEquality().equals(other._insights, _insights)&&const DeepCollectionEquality().equals(other._definitions, _definitions));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,currentScore,valueLabel,const DeepCollectionEquality().hash(_timeframes));
+int get hashCode => Object.hash(runtimeType,type,currentScore,valueLabel,const DeepCollectionEquality().hash(_points),const DeepCollectionEquality().hash(_metrics),const DeepCollectionEquality().hash(_insights),const DeepCollectionEquality().hash(_definitions));
 
 @override
 String toString() {
-  return 'ScoreDto(type: $type, currentScore: $currentScore, valueLabel: $valueLabel, timeframes: $timeframes)';
+  return 'ScoreDto(type: $type, currentScore: $currentScore, valueLabel: $valueLabel, points: $points, metrics: $metrics, insights: $insights, definitions: $definitions)';
 }
 
 
@@ -259,7 +283,7 @@ abstract mixin class _$ScoreDtoCopyWith<$Res> implements $ScoreDtoCopyWith<$Res>
   factory _$ScoreDtoCopyWith(_ScoreDto value, $Res Function(_ScoreDto) _then) = __$ScoreDtoCopyWithImpl;
 @override @useResult
 $Res call({
- String type, double currentScore, String valueLabel,@JsonKey(fromJson: _timeframesFromJson, toJson: _timeframesToJson) Map<String, TimeframeDto> timeframes
+ String type, double currentScore, String valueLabel, List<DataPointDto> points,@JsonKey(fromJson: _metricsFromJson, toJson: _metricsToJson) Map<String, List<DataPointDto>> metrics, List<String> insights, List<DefinitionDto> definitions
 });
 
 
@@ -276,13 +300,16 @@ class __$ScoreDtoCopyWithImpl<$Res>
 
 /// Create a copy of ScoreDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? type = null,Object? currentScore = null,Object? valueLabel = null,Object? timeframes = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? type = null,Object? currentScore = null,Object? valueLabel = null,Object? points = null,Object? metrics = null,Object? insights = null,Object? definitions = null,}) {
   return _then(_ScoreDto(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,currentScore: null == currentScore ? _self.currentScore : currentScore // ignore: cast_nullable_to_non_nullable
 as double,valueLabel: null == valueLabel ? _self.valueLabel : valueLabel // ignore: cast_nullable_to_non_nullable
-as String,timeframes: null == timeframes ? _self._timeframes : timeframes // ignore: cast_nullable_to_non_nullable
-as Map<String, TimeframeDto>,
+as String,points: null == points ? _self._points : points // ignore: cast_nullable_to_non_nullable
+as List<DataPointDto>,metrics: null == metrics ? _self._metrics : metrics // ignore: cast_nullable_to_non_nullable
+as Map<String, List<DataPointDto>>,insights: null == insights ? _self._insights : insights // ignore: cast_nullable_to_non_nullable
+as List<String>,definitions: null == definitions ? _self._definitions : definitions // ignore: cast_nullable_to_non_nullable
+as List<DefinitionDto>,
   ));
 }
 

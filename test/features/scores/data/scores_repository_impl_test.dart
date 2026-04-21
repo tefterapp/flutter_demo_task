@@ -36,26 +36,22 @@ void main() {
         'type': 'health',
         'currentScore': 72.5,
         'valueLabel': 'Good',
-        'timeframes': {
-          'd1': {
-            'points': [
-              {'date': '2026-04-15T06:00:00Z', 'value': 70.0},
-            ],
-            'metrics': {
-              'steps': [
-                {'date': '2026-04-15', 'value': 8420.0},
-              ],
-            },
-            'insights': ['keep me'],
-            'definitions': [
-              {
-                'key': 'steps',
-                'title': 'Steps',
-                'description': 'Daily step count.',
-              },
-            ],
-          },
+        'points': [
+          {'date': '2026-04-15', 'value': 70.0},
+        ],
+        'metrics': {
+          'steps': [
+            {'date': '2026-04-15', 'value': 8420.0},
+          ],
         },
+        'insights': ['keep me'],
+        'definitions': [
+          {
+            'key': 'steps',
+            'title': 'Steps',
+            'description': 'Daily step count.',
+          },
+        ],
       },
     ],
   });

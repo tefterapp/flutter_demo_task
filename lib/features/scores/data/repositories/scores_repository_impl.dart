@@ -9,7 +9,6 @@ import '../../domain/repositories/scores_repository.dart';
 import '../datasources/scores_local_datasource.dart';
 import '../models/score_dto.dart';
 import '../models/scores_payload_dto.dart';
-import '../models/timeframe_dto.dart';
 
 final class ScoresRepositoryImpl implements ScoresRepository {
   ScoresRepositoryImpl({
@@ -82,6 +81,9 @@ final class ScoresRepositoryImpl implements ScoresRepository {
     );
   }
 
+  /// The mock exposes a single daily series per score; the timeframe argument
+  /// is forwarded as metadata so the presentation layer can bucket the same
+  /// data into week/month/year views without the JSON duplicating it.
   Either<Failure, ScoreDetail> _mapScoreDetail(
     ScoresPayloadDto scoresPayloadDto,
     ScoreType type,
@@ -99,25 +101,9 @@ final class ScoresRepositoryImpl implements ScoresRepository {
         ParsingFailure(message: 'Missing score for type: ${type.jsonKey}'),
       );
     }
-    final timeframeDto = match.timeframes[timeframe.jsonKey];
-    if (timeframeDto == null) {
-      return Left(
-        ParsingFailure(
-          message:
-              'Missing timeframe ${timeframe.jsonKey} for type ${type.jsonKey}',
-        ),
-      );
-    }
-    return _mapTimeframeDto(type, timeframe, timeframeDto);
-  }
 
-  Either<Failure, ScoreDetail> _mapTimeframeDto(
-    ScoreType type,
-    Timeframe timeframe,
-    TimeframeDto timeframeDto,
-  ) {
     final points = <ScorePoint>[];
-    for (final p in timeframeDto.points) {
+    for (final p in match.points) {
       final parsed = DateTime.tryParse(p.date);
       if (parsed == null) {
         return Left(
@@ -128,7 +114,7 @@ final class ScoresRepositoryImpl implements ScoresRepository {
     }
 
     final metrics = <String, List<MetricPoint>>{};
-    for (final entry in timeframeDto.metrics.entries) {
+    for (final entry in match.metrics.entries) {
       final list = <MetricPoint>[];
       for (final p in entry.value) {
         final parsed = DateTime.tryParse(p.date);
@@ -144,7 +130,7 @@ final class ScoresRepositoryImpl implements ScoresRepository {
       metrics[entry.key] = list;
     }
 
-    final definitions = timeframeDto.definitions
+    final definitions = match.definitions
         .map(
           (d) => MetricDefinition(
             key: d.key,
@@ -160,7 +146,7 @@ final class ScoresRepositoryImpl implements ScoresRepository {
         timeframe: timeframe,
         points: points,
         metrics: metrics,
-        insights: List<String>.from(timeframeDto.insights),
+        insights: List<String>.from(match.insights),
         definitions: definitions,
       ),
     );
